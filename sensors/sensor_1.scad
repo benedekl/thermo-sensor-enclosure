@@ -5,7 +5,7 @@ module sensor() {
     radio_size = [15.2, 29.2, 1.5];
     distance = 15.3;
     radio_offset = [(pcb_size[0] - radio_size[0]) / 2, pcb_size[1] - 13.5, distance + pcb_size[2]];
-    
+
     module mainboard(size=pcb_size)
     {
         hole_d = 3.5;
@@ -17,7 +17,7 @@ module sensor() {
                 %translate([0, 0, pcb_size[2]])
                 cube(size+[0,0,distance-pcb_size[2]]);
             }
-            
+
             // mount holes
             for (i = [4.5, size[0] - 4.5]) {
                 translate([i, 6.3, 0])
@@ -25,7 +25,7 @@ module sensor() {
             }
         }
     }
-    
+
     module radio(size=radio_size) {
         ant_d1 = 0.7;
         ant_d2 = 4.5;
@@ -49,5 +49,3 @@ module sensor() {
     mainboard();
     translate(radio_offset) radio();
 }
-
-sensor();
